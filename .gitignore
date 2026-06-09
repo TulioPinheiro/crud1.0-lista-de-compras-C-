@@ -1,0 +1,26 @@
+# Let's create the requested .gitignore file and save it as a text file for the user to download.
+# Since the user asked for "o arquivo gitignore", we will generate it.
+
+gitignore_content = """# Cache do VS Code / Visual Studio
+.vs/
+.vscode/
+
+# Pastas de build e compilação
+bin/
+obj/
+
+# Arquivos de log, temporários ou de usuário
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Arquivos de sistema
+Thumbs.db
+Desktop.ini
+"""
+
+with open(".gitignore", "w", encoding="utf-8") as f:
+    f.write(gitignore_content)
+
+print("File .gitignore created successfully.")
