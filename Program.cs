@@ -15,7 +15,8 @@ public class Program
             Console.WriteLine("2. Remover item");
             Console.WriteLine("3. Exibir lista");
             Console.WriteLine("4. Limpar lista");
-            
+            Console.WriteLine("5 . Sair Do programa");
+            Console.WriteLine();
             Console.Write("Escolha uma opção: ");
             Console.WriteLine("Escolhe um numero pra continuar: ");
 
@@ -40,16 +41,36 @@ public class Program
                     break;
 
                 case "2":
-                    Console.WriteLine("Digite o item que deseja remover: "); // Solicita ao usuário que digite o item a ser removido
-                    string itemRemove = Console.ReadLine(); // Lê o item digitado pelo usuário
-                    if (shoppingList.Remove(itemRemove)) // Tenta remover o item da lista de compras
+
+                    if (shoppingList.Count == 0)
                     {
-                        Console.WriteLine($"Item '{itemRemove}' removido da lista de compras!"); // Confirmação de que o item foi removido
+                        Console.WriteLine("A lista de compras está vazia.");
+                        break;
+                    }
+
+                    Console.WriteLine("Itens da lista:");
+
+                    for (int i = 0; i < shoppingList.Count; i++)
+                    {
+                        Console.WriteLine($"{i + 1}. {shoppingList[i]}");
+                    }
+
+                    Console.Write("\nDigite o número do item que deseja remover: ");
+
+                    if (int.TryParse(Console.ReadLine(), out int indice) &&
+                        indice >= 1 &&
+                        indice <= shoppingList.Count)
+                    {
+                        string itemRemovido = shoppingList[indice - 1];
+                        shoppingList.RemoveAt(indice - 1);
+
+                        Console.WriteLine($"Item '{itemRemovido}' removido com sucesso!");
                     }
                     else
                     {
-                        Console.WriteLine($"Item '{itemRemove}' não encontrado na lista de compras."); // Mensagem de erro para item não encontrado
+                        Console.WriteLine("Número inválido.");
                     }
+
                     break;
 
                 case "3":
@@ -71,6 +92,10 @@ public class Program
                 case "4":
                     shoppingList.Clear(); // Limpa a lista de compras
                     Console.WriteLine("Lista de compras limpa!"); // Confirmação de que a lista foi limpa
+                    break;
+
+                case "5":
+                    Console.WriteLine("Sair do Programa . Obrigado");
                     break;
 
                 default:
