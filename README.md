@@ -23,6 +23,7 @@ Menu Basico do Sistema
 2. Remover item
 3. Exibir lista
 4. Limpar lista
+5. Sair do Programa
 
 Durante o desenvolvimento deste projeto, utilizei:
 - Criação e manipulação de listas
